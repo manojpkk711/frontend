@@ -1,0 +1,87 @@
+<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Create New User</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+
+      <div id="formContent" style="margin-left: 5%">
+
+        <div>
+          <img src="../../assets/img/users.png" id="icon" alt="User Icon" />
+        </div>
+        <form #signUpForm="ngForm" (ngSubmit)="signUpForm.valid && onSubmit(signUpForm)">
+
+          <input type="text" #fullName="ngModel" [(ngModel)]="userService.selectedUser.fullName" name="fullName"
+            placeholder="Full Name" required [ngClass]="{'invalid-textbox' :signUpForm.submitted && !fullName.valid }">
+
+          <div *ngIf="signUpForm.submitted && !fullName.valid">
+            <label class="validation-message">This field is required.</label>
+          </div>
+
+          <input type="text" #email="ngModel" [(ngModel)]="userService.selectedUser.email" name="email"
+            placeholder="Email" required [pattern]="emailRegex"
+            [ngClass]="{'invalid-textbox' :signUpForm.submitted && !email.valid }">
+
+          <div *ngIf="signUpForm.submitted && email.errors">
+            <label *ngIf="email.errors.required" class="validation-message">This field is required.</label>
+            <label *ngIf="email.errors.pattern" class="validation-message">Invalid email address.</label>
+          </div>
+
+          <input type="password" #password="ngModel" [(ngModel)]="userService.selectedUser.password" name="password"
+            placeholder="Password" minlength="4" required
+            [ngClass]="{'invalid-textbox' :signUpForm.submitted && !password.valid }"><br><br>
+
+
+          <div *ngIf="signUpForm.submitted && password.errors">
+            <label *ngIf="password.errors.required" class="validation-message">This field is required.</label>
+            <label *ngIf="password.errors.minlength" class="validation-message">Enter atleast 4 characters.</label>
+          </div>
+
+          <div class="position-relative form-group">
+            <label>Role</label>
+            <select class="form-control" #role="ngModel" [(ngModel)]="userService.selectedUser.role" name="role"
+              required [ngClass]="{'invalid-textbox' :signUpForm.submitted && !role.valid }"
+              style="inline-size: 43ch;margin-left: 9%">
+              <option disabled>Please Select Role</option>
+              <option name="Admin" value="Admin">Admin</option>
+              <option name="agent" value="Agent">Agent</option>
+              <option name="client" value="Client">Client</option>
+            </select>
+          </div>
+
+
+
+          <!-- <input type="text" #role="ngModel" [(ngModel)]="userService.selectedUser.role" name="role" placeholder="Role"
+  required  [ngClass]="{'invalid-textbox' :signUpForm.submitted && !role.valid }">  -->
+
+
+          <button type="submit" class="btn btn-success" (click)="login()">create User</button>
+          <button type="cancel" class="btn btn-danger" (click)="Goback()">Login</button><br><br>
+        </form>
+        <!-- Success message -->
+        <div class="success" *ngIf="showSucessMessage">
+          User Created
+        </div>
+
+        <!-- Error message -->
+        <div class="alert" *ngIf="serverErrorMessages">
+          {{serverErrorMessages}}
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+</div>
+<div class="text-center">
+  <a href="" class="btn btn-secondary btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm">Create New
+    user</a>
+</div>

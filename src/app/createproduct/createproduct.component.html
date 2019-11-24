@@ -1,0 +1,110 @@
+<div class="w-100 position-relative">
+  <app-navbar></app-navbar>
+</div>
+
+<div class="abc">
+  <div class="container" d-flex>
+    <div class=" w-100">
+      <table class="w-100" style="margin-top: 30px">
+        <thead>
+          <th>Product_name</th>
+          <th>Clientname</th>
+          <th>Username</th>
+          <th>Password</th>
+          <th>Time</th>
+          <th>Action</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let policy of Emp?.data" ng-required="this files is required">
+            <td>{{policy.product_name}}</td>
+            <td>{{policy.client_name}}</td>
+            <td>{{policy.username}}</td>
+            <td>{{policy.password}}</td>
+            <td>{{policy.time}}</td>
+            <td>
+
+              <ol class="d-flex"><button class="border-0 btn-transition btn btn-outline-warning">
+                  <i class="fa fa-times" aria-hidden="false"></i>
+                </button>
+
+                <button class="border-0 btn-transition btn btn-outline-warning" (click)="openModal(template, policy)">
+                  <i class="fa fa-edit"></i>
+                </button>
+
+                <button class="border-0 btn-transition btn btn-outline-warning" (click)="delete(policy)">
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
+              </ol>
+            </td>
+
+            
+              <form [formGroup]="editForm">
+                <ng-template #template>
+                  <div class="modal-header">
+                    <h4 class="modal-title pull-left">Edit Assign Product</h4>
+                    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group">
+                      <label for="pname">product name</label>
+                      <input type="text" class="form-control" id="pname" formControlName="product_name"
+                        aria-describedby="emailHelp" placeholder="Enter product name">
+
+                    </div>
+                    <div class="form-group">
+                      <label for="cname">client name</label>
+                      <input type="text" class="form-control" id="cname" formControlName="client_name"
+                        aria-describedby="emailHelp" placeholder="Enter client name">
+
+                    </div>
+
+
+                  
+
+                    <div class="form-group">
+                      <label for="cname">User name</label>
+                      <input type="text" class="form-control" id="cname" formControlName="username"
+                        aria-describedby="emailHelp" placeholder="Enter client name">
+
+                    </div>
+                    <div class="form-group">
+                      <label for="password">password</label>
+                      <input type="text" class="form-control" id="password" formControlName="password"
+                        aria-describedby="emailHelp"  placeholder="Enter passoword">
+                      </div>
+
+
+
+                    <div class="form-group">  
+                      <label for="time">time</label>
+                      <input type="text" class="form-control" id="time" formControlName="time"
+                        aria-describedby="emailHelp" placeholder="Enter time">
+
+                    </div>
+                    <div class="modal-footer">
+          <tr ng-required="this files is required">
+            <button class="border-0 btn-transition btn btn-outline-warning" type="submit" (click)="xyz(policy)">
+              submit
+            </button>
+          </tr>
+    </div>
+  </div>
+  </ng-template>
+  </form>
+
+  
+  </tr>
+  </tbody>
+  </table>
+
+
+</div>
+</div>
+
+<app-popassignproducts></app-popassignproducts>
+</div>
+
+
+

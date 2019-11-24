@@ -1,0 +1,96 @@
+<div class="w-100 position-relative">
+    <app-navbar></app-navbar>
+</div>
+<div class="abc">
+    <div class="container" d-flex>
+        <div class=" w-100">
+            <table class="w-100" style="margin-top: 30px">
+                <thead>
+                    <th>Product_Name</th>
+                    <th>Username</th>
+                    <th>Link</th>
+                    <th>Password</th>
+                    <th>Action</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let policy of Emp?.data" ng-required="this files is required">
+                        <td>{{policy.product_name}}</td>
+                        <td>
+                            <div class="position-relative form-group">
+                                <select class="form-control" (change)="unitChanged(policy)" [(ngModel)]="name">
+                                    <option *ngFor="let uname of policy.users">{{uname?.username}}</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td>{{policy.link}}</td>
+                        <td>
+                            <span>
+                                {{policy?.psw}}
+                            </span>
+                        </td>
+                        <td>
+                            <ol class="d-flex"><button class="border-0 btn-transition btn btn-outline-warning">
+                                    <i class="fa fa-times" aria-hidden="false"></i>
+                                </button>
+                                <button class="border-0 btn-transition btn btn-outline-warning"
+                                    (click)="openModal(template, policy)">
+                                    <i class="fa fa-edit"></i>
+                                </button>
+                                <button class="border-0 btn-transition btn btn-outline-warning"
+                                    (click)="delete(policy)">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </button>
+                            </ol>
+                        </td>
+
+                        <form [formGroup]="productDataform">
+                            <ng-template #template>
+                                <div class="modal-header">
+                                    <h4 class="modal-title pull-left">Edit product List</h4>
+                                    <button type="button" class="close pull-right" aria-label="Close"
+                                        (click)="modalRef.hide()">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="pname">product name</label>
+                                        <input type="text" class="form-control" id="pname"
+                                            formControlName="product_name" aria-describedby="emailHelp"
+                                            placeholder="Enter product name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cname">Link</label><br>
+                                        <input type="text" class="form-control" id="link" formControlName="link"
+                                            aria-describedby="emailHelp" placeholder="Enter link name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cname">username</label><br>
+                                        <input type="text" class="form-control" id="basic-url"
+                                            formControlName="username" placeholder="username">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="cname">password</label><br>
+                                        <input type="text" class="form-control" id="basic-url"
+                                            formControlName="password" placeholder="password">
+                                    </div>
+
+                                    <div class="modal-footer">
+                    <tr ng-required="this files is required">
+                        <button class="border-0 btn-transition btn btn-outline-warning" type="submit"
+                            (click)="xyz(policy)">
+                            submit
+                        </button>
+                    </tr>
+        </div>
+    </div>
+    </ng-template>
+    </form>
+
+    </tr>
+    </tbody>
+    </table>
+</div>
+</div>
+<app-popcreateproducts></app-popcreateproducts>
+</div>

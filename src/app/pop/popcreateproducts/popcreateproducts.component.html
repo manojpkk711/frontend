@@ -1,0 +1,68 @@
+<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Create Product</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <form #popform="ngForm" [formGroup]="loginForm" (ngSubmit)="postUser()">
+        <!-- <form #popform="ngForm" (ngSubmit)="popform.valid && onSubmit(popform)"> -->
+        <input type="text" formControlName="product_name" name="product_name" placeholder="Product Name">
+  
+         <!-- <div *ngIf="popform.submitted && !product_name.valid">
+          <label class="validation-message">This field is required.</label>
+        </div>  -->
+
+        <input type="text" formControlName="link" placeholder="Link">
+
+        <div formArrayName="users">
+          <div *ngFor="let group of UsersArray.controls; index as i;" [formGroupName]="i">
+            <div class="row">
+              <div class="col">
+                <div class="input-group mb-3">
+                  <input type="text" class="form-control" id="basic-url" formControlName="username"
+                    placeholder="username">
+                </div>
+              </div>
+              <div class="col">
+                <div class="input-group mb-3">
+                  <input type="passowrod" class="form-control" id="basic-url1" formControlName="password"
+                    placeholder="password" style="margin-top: 5px;margin-left:-15px;">
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="text-center">
+            <button type="button" class="btn btn-primary mr-md-3" (click)="addUser()">add new</button>
+            <button type="button" class="btn btn-primary" (click)="deleteUser()">delete</button>
+          </p>
+        </div>
+
+        <div class="position-relative form-group">
+          <div class="row">
+            <div class="col-md-12 text-center mt-2">
+              <div class="widget-content-right">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <p *ngIf="errorMsg" class="text-danger">{{errorMsg}}</p>
+        <button type="submit" class="btn btn-success" style="margin-left: 140px">Assign Product</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close" style="margin-left: 10px">
+          cancel
+        </button>
+      </form>
+      
+    </div>
+  </div>
+</div>
+<div class="text-center">
+  <a href="" class="btn btn-secondary btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm">Create
+    Product</a>
+</div>

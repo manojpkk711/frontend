@@ -1,0 +1,38 @@
+<div class="w-100 position-relative">
+  <app-navbar></app-navbar>
+</div>
+
+<div class="abc">
+  <div class="row m-0">
+    <div class=" container d-flex">
+      <div class=" w-100">
+        <table class="w-100" style="margin-top: 30px;">
+          <thead>
+            <th>Users</th>
+            <th>Role</th>
+            <th>Delete User</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let policy of Full?.user" ng-required="this files is required">
+              <td>{{policy.fullName}}</td>
+              <td>{{policy.role}}</td>
+              <td><div class="abcd" style="margin-left: 20%">
+                <button class="border-0 btn-transition btn btn-outline-warning" (click)="delete(policy)"
+                  ng-click="clickMe(angularAlert)">
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
+
+                <button class="border-0 btn-transition btn btn-outline-warning" (click)="refresh()">
+                  <i class="fa fa-refresh" aria-hidden="true"></i>
+                </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <br>
+  <app-signuppopup></app-signuppopup>
+</div>

@@ -1,0 +1,47 @@
+<div class="container-fluid">
+  <app-navbar></app-navbar>
+  <div class="row">
+    <div class="col-12 ">
+      <div class="col-6 offset-3 bg-form">
+        <form [formGroup]="loginForm">
+          <div class="col-sm-12" style="text-align:center;">
+            <h3> Create User</h3>
+          </div>
+          <div class="form-group">
+            <br><label for="Clientname">User Name</label>
+            <input formControlName="Clientname" type="name" class="form-control" id="name" aria-describedby="name"
+              placeholder="Enter Client/Agent Name">
+            <small id="Clientname" class="form-text text-muted"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="Clientname">Email</label>
+            <input formControlName="product_Name" type="name" class="form-control" id="name" aria-describedby="name"
+              placeholder="Enter Product User Name">
+            <small id="Clientname" class="form-text text-muted"></small>
+          </div>
+          <div class="form-group">
+            <label for="Clientname">User-password</label>
+            <input formControlName="product_Name" type="password" class="form-control" id="password"
+              aria-describedby="name" placeholder="Enter password here">
+            <small id="Clientname" class="form-text text-muted"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="passwordInput">Role</label>
+            <select name="users" class="form-control">
+              <option>Client</option>
+              <option>Agent</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="text-align:center;">
+            <br><button type="button" class="btn btn-info" (click)="createUser()">Create User</button>
+            <button type="button" class="btn btn-danger" (click)="login()">Logout</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
